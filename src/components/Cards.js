@@ -1,11 +1,13 @@
-import { useState } from "react";
+// import { useState } from "react";
 import Card from "./Card";
 import Nodata from "./Nodata";
 
 function Cards(props){
     let courses = props.courses;
     let category = props.category;
-    const [likedCourses, setLikedCourses] = useState([]);
+    // const [likedCourses, setLikedCourses] = useState([]);
+    let likedCourses = props.likedCourses;
+    let setLikedCourses = props.setLikedCourses;
 
     function getCoursesData() {
         let arr = [];

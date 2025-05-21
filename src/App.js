@@ -1,20 +1,19 @@
 import './App.css';
-import Filter from './components/Filter'
-import Cards from './components/Cards'
-import { filterData } from './data';
 import { apiUrl } from './data';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import Loader from './components/Loader';
-import Nodata from './components/Nodata';
-import React from 'react';
 import { ToastContainer } from 'react-toastify';
+import Home from './components/Home';
+import Wishlist from './components/Wishlist';
+import {Routes, Route} from 'react-router-dom'
+
 
 
 function App() {
   const [courses, setCourses] = useState(null);
   const [load, setLoad] = useState(true);
-  const [category, setCategory] = useState("All");
+  const [likedCourses, setLikedCourses] = useState([]);
+
   async function fetchData() {
     try{
       // setLoad(true);
@@ -34,30 +33,19 @@ function App() {
 
   return (
     <div>
-      <div className="App">
-      <div className="topRibbon">
-        <p>Top Courses</p>
-      </div>
-      {/* <div className="filterSection"> */}
-        <Filter filterData={filterData} setCategory={setCategory} category={category}></Filter>
-      {/* </div> */}
-      <div className="cards-loader-section">
-        {
-          (!load) 
-          ? 
-          // what is data obtained is empty??
-          ((typeof courses === "object" && Object.keys(courses).length === 0) ? 
-            <Nodata></Nodata> : 
-            <Cards courses={courses} category={category}></Cards>
-          )
-          :
-          (<Loader></Loader>) 
+        <div className="App">
+            <div className="topRibbon">
+              <p>Top Courses</p>
+            </div>
+            
+            <Routes>
+              <Route path="/" element= {<Home load={load} courses={courses} likedCourses={likedCourses} setLikedCourses={setLikedCourses}/>}></Route>
+              <Route path="/wishlist" element={<Wishlist likedCourses={likedCourses} setLikedCourses={setLikedCourses}/>}></Route>
+            </Routes>
+            
 
-        }
-      </div>
-       
-    </div>
-    <ToastContainer className="toast-container"/>
+        </div>
+        <ToastContainer className="toast-container"/>
     </div>
     
   );
