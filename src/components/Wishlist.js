@@ -20,11 +20,17 @@ function Wishlist(props){
                 </button>
 
             </div>
-            <div className="cards-section liked-cards">
+            <div className="mysec">
                 {
                     (Array.isArray(likedCourses) && likedCourses.length === 0) ?
                     (<Nodata></Nodata>) :
-                    (likedCourses.map((lkCourse) => <Card course={lkCourse}  key={lkCourse.id}></Card>))
+                    (
+                        <div className="cards-section liked-cards">
+                        {
+                            likedCourses.map((lkCourse) => <Card course={lkCourse}  key={lkCourse.id}></Card>)
+                        }
+                        </div>
+                    )
                 }
             </div>
         </div>
