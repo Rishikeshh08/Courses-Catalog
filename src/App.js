@@ -7,20 +7,19 @@ import Home from './components/Home';
 import Wishlist from './components/Wishlist';
 import {Routes, Route} from 'react-router-dom'
 
-
 // this is redux branch
+
 function App() {
   const [courses, setCourses] = useState(null);
   const [load, setLoad] = useState(true);
-  const [likedCourses, setLikedCourses] = useState([]);
 
   async function fetchData() {
     try{
-      // setLoad(true);
+      setLoad(true);
       let response = await fetch(apiUrl);
       let output = await response.json();
       setCourses(output.data);
-      // setCourses({});
+      console.log(output); 
       setLoad(false);
     }
     catch(e) {
@@ -33,19 +32,21 @@ function App() {
 
   return (
     <div>
+        {/* <Toaster/> */}
         <div className="App">
             <div className="topRibbon">
               <p>Top Courses</p>
             </div>
             
             <Routes>
-              <Route path="/" element= {<Home load={load} courses={courses} likedCourses={likedCourses} setLikedCourses={setLikedCourses}/>}></Route>
-              <Route path="/wishlist" element={<Wishlist likedCourses={likedCourses} setLikedCourses={setLikedCourses}/>}></Route>
+              <Route path="/" element= {<Home load={load} courses={courses}/>}></Route>
+              <Route path="/wishlist" element={<Wishlist/>}></Route>
             </Routes>
             
 
         </div>
-        <ToastContainer className="toast-container"/>
+        <ToastContainer className="toast-container" autoClose={1000}/>
+        
     </div>
     
   );

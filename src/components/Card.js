@@ -1,23 +1,36 @@
 import { FcLike } from "react-icons/fc";
 import { FcLikePlaceholder } from "react-icons/fc"; 
+import { useDispatch } from "react-redux";
 import { toast} from 'react-toastify';
+// import {toast} from 'react-hot-toast'
+// import 'react-hot-toast/dist/react-hot-toast.css';
 import 'react-toastify/dist/ReactToastify.css';
+import {add, remove} from '../redux/slices/likeSlice'
+import { useSelector } from "react-redux";
 
 function Card(props) {
     let course = props.course;
     let description = (course.description.length <= 100) ? course.description : (course.description.substring(0, 100) + "...");
-    let likedCourses = props.likedCourses;
-    let setLikedCourses = props.setLikedCourses;
+    // let likedCourses = props.likedCourses;
+    // let setLikedCourses = props.setLikedCourses;
+
+    const likedCourses = useSelector((state) => state.like);
+    console.log(likedCourses)
+    const dispatch = useDispatch();
+
     function likeHandler(){
         if(likedCourses.includes(course)) {
-            setLikedCourses(prev => prev.filter((c) => c.id !== course.id) )  //prev.push(course)
+            // setLikedCourses(prev => prev.filter((c) => c.id !== course.id) ) 
+            dispatch(remove(course.id));
             toast.warning("Like Removed")
         }else{
-            setLikedCourses(prev => [...prev, course]);
+            // setLikedCourses(prev => [...prev, course]);
+            dispatch(add(course))
             toast.success("Liked Successfully")
         }
         
     }
+
     
     return(
         <div className="card-section">

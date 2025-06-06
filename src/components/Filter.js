@@ -1,17 +1,22 @@
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 
 
 function Filter(props) {
     let filterData = props.filterData;
-    let likedCourses = props.likedCourses;
-    let num = likedCourses.length;
+    // let likedCourses = props.likedCourses;
+    // let num = likedCourses.length;
     // console.log(likedCourses);
     
     // console.log(num);
     // console.log(filterData);
     let setCategory = props.setCategory;
     let category = props.category;
+
+
+    const likedCourses = useSelector((state) => state.like)
+    let num = likedCourses.length;
 
     let navigate = useNavigate();
     function clickHandler(title){

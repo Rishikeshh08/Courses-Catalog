@@ -2,12 +2,10 @@ import Nodata from "./Nodata";
 import Card from "./Card";
 import { useNavigate } from "react-router-dom";
 import { IoChevronBackOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
 
 function Wishlist(props){
-    let likedCourses = props.likedCourses;
-    let setLikedCourses = props.setLikedCourses;
-    console.log("Liked Courses");
-            console.log(likedCourses)
+    const likedCourses = useSelector((state) => state.like);
 
     let navigate = useNavigate();
     function backHandler(){
@@ -26,7 +24,7 @@ function Wishlist(props){
                 {
                     (Array.isArray(likedCourses) && likedCourses.length === 0) ?
                     (<Nodata></Nodata>) :
-                    (likedCourses.map((lkCourse) => <Card course={lkCourse}  key={lkCourse.id} likedCourses={likedCourses} setLikedCourses={setLikedCourses}></Card>))
+                    (likedCourses.map((lkCourse) => <Card course={lkCourse}  key={lkCourse.id}></Card>))
                 }
             </div>
         </div>

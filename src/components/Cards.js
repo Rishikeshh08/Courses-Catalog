@@ -5,9 +5,7 @@ import Nodata from "./Nodata";
 function Cards(props){
     let courses = props.courses;
     let category = props.category;
-    // const [likedCourses, setLikedCourses] = useState([]);
-    let likedCourses = props.likedCourses;
-    let setLikedCourses = props.setLikedCourses;
+    
 
     function getCoursesData() {
         let arr = [];
@@ -18,7 +16,7 @@ function Cards(props){
                 )
             )
         } else{
-            arr = courses[category];
+            arr = courses[category];  //courses.category nahi ayega becoz category is a variable
         }
         return arr;
     }
@@ -33,7 +31,7 @@ function Cards(props){
                 :
                 (
                 mydata.map( (course) => (
-                    <Card key={course.id} course={course} likedCourses={likedCourses} setLikedCourses={setLikedCourses}></Card>
+                    <Card key={course.id} course={course}></Card>
                 ))
                 )
             }
