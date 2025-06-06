@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Courses-Catalog/static/css/main.7b86896e.css",
-    "main.js": "/Courses-Catalog/static/js/main.be7d3b82.js",
+    "main.css": "/Courses-Catalog/static/css/main.3f0ff3f5.css",
+    "main.js": "/Courses-Catalog/static/js/main.b7b37acc.js",
     "static/js/453.c15fdf79.chunk.js": "/Courses-Catalog/static/js/453.c15fdf79.chunk.js",
     "index.html": "/Courses-Catalog/index.html",
-    "main.7b86896e.css.map": "/Courses-Catalog/static/css/main.7b86896e.css.map",
-    "main.be7d3b82.js.map": "/Courses-Catalog/static/js/main.be7d3b82.js.map",
+    "main.3f0ff3f5.css.map": "/Courses-Catalog/static/css/main.3f0ff3f5.css.map",
+    "main.b7b37acc.js.map": "/Courses-Catalog/static/js/main.b7b37acc.js.map",
     "453.c15fdf79.chunk.js.map": "/Courses-Catalog/static/js/453.c15fdf79.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7b86896e.css",
-    "static/js/main.be7d3b82.js"
+    "static/css/main.3f0ff3f5.css",
+    "static/js/main.b7b37acc.js"
   ]
 }
